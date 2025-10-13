@@ -40,11 +40,13 @@ export default function Login() {
                             <TextInput id="password" type="password" name="password" placholder="Enter your password"/>
                         </div>
                         <div className="grid space-y-[14px] mt-[30px]">
-                            <Button type="button" variant="primary">
-                                <span className="text-base font-semibold">
-                                    Start Watching
+                            <Link href={route('prototype.dashboard')}>
+                            <Button type="submit">
+                                <span className="text-base text-white">
+                                    Sign In
                                 </span>
                             </Button>
+                            </Link>
                             <Link href={route('prototype.register')}>
                                 <Button type="button" variant="white-outline">
                                 <span className="text-base text-white">
