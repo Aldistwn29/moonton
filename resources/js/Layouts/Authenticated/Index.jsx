@@ -13,10 +13,6 @@ export default function Authenticated({ children }) {
                     {/* Star:Topbar */}
                     <Topbar />
                     {/* End:Topbar */}
-                    {/* Star:Featured */}
-                    {/* End:Featured */}
-                    {/* Star:Browser */}
-                    {/* End:Browser */}
                 </div>
                 {/* Star: Content */}
                 <main>{children}</main>

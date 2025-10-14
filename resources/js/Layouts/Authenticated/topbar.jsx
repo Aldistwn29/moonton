@@ -40,13 +40,6 @@ export default function Topbar() {
                         </div>
                     </div>
                 </div>
-                {/* <style jsx>
-                   {`
-                     .top-search {
-                        style="background-image: url('/assets/icons/ic_search.svg');"
-                    }
-                   `}
-                </style> */}
             </div>
         </>
     );

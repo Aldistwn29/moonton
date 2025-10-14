@@ -22,6 +22,14 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     Route::get('/dashboard', function() {
         return inertia::render('prototype/dashboard');
     })->name('dashboard');
+
+    Route::get('/subscription', function() {
+        return inertia::render('prototype/subscription');
+    })->name('subscription');
+
+    Route::get('/movie{slug}', function() {
+        return inertia::render('prototype/movie/show');
+    })->name('movie.show');
     
 });
 

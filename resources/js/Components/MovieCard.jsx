@@ -1,4 +1,5 @@
 
+import { Link } from "@inertiajs/react";
 import PropTypes from "prop-types";
 
 MovieCard.prototype = {
@@ -36,7 +37,10 @@ export default function MovieCard({
                 >
                     <img src="/assets/icons/ic_play.svg" className="" width={50} alt="" />
                 </div>
-                <a href={slug} className="absolute inset-0 z-50" />
+                <Link 
+                    href={route('prototype.movie.show', slug)} 
+                    className="absolute inset-0 z-50">
+                </Link>
             </div>
         </>
     )
