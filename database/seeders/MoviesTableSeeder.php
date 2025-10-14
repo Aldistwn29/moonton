@@ -21,6 +21,7 @@ class MoviesTableSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=TcMBFSGVi1c',
                 'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNl5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg',
                 'rating' => 4.5,
+                'is_featured' => true
             ],
             [
                 'name' => 'Avengers: Infinity War',
@@ -29,6 +30,7 @@ class MoviesTableSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=6ZfuNTqbHE8',
                 'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BMjM0NTgyNjAxMV5BMl5BanBnXkFtZTgwNzU1NzU2NTM@._V1_.jpg',
                 'rating' => 4.5,
+                'is_featured' => false
             ],
             [
                 'name' => 'Avengers: Age of Ultron',
@@ -37,6 +39,7 @@ class MoviesTableSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=tmeOjFno6Do',
                 'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTgwMjQ4OTM4NjE@._V1_.jpg',
                 'rating' => 4.5,
+                'is_featured' => false
             ]
         ];
 
