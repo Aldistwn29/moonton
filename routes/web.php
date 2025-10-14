@@ -27,7 +27,7 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
         return inertia::render('prototype/subscription');
     })->name('subscription');
 
-    Route::get('/movie{slug}', function() {
+    Route::get('/movie/{slug}', function() {
         return inertia::render('prototype/movie/show');
     })->name('movie.show');
     
