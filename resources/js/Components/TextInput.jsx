@@ -1,30 +1,62 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
-export default forwardRef(function TextInput(
-    { type = 'text', className = '', isFocused = false, ...props },
-    ref,
+const TextInput = forwardRef(function TextInput(
+  {
+    type = 'text',
+    name,
+    value,
+    defaultValue,
+    className = '',
+    placeholder,
+    variant = 'primary',
+    autoComplete,
+    required,
+    isFocused,
+    handleChange,
+    onChange,
+    ...props 
+  },
+  ref,
 ) {
-    const localRef = useRef(null);
+  const inputRef = useRef();
 
-    useImperativeHandle(ref, () => ({
-        focus: () => localRef.current?.focus(),
-    }));
+  useEffect(() => {
+    if (isFocused) {
+      inputRef.current.focus();
+    }
+  }, [isFocused]);
 
-    useEffect(() => {
-        if (isFocused) {
-            localRef.current?.focus();
-        }
-    }, [isFocused]);
-
-    return (
-        <input
-            {...props}
-            type={type}
-            className={
-                'rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 ' +
-                className
-            }
-            ref={localRef}
-        />
-    );
+  return (
+    <input
+      {...props}
+      ref={ref || inputRef}
+      type={type}
+      name={name}
+      value={value}
+      defaultValue={defaultValue}
+      autoComplete={autoComplete}
+      required={required}
+      onChange={handleChange || onChange}
+      placeholder={placeholder}
+      className={`rounded-2xl bg-form-bg py-[13px] px-7 w-full input-${variant} ${className}`}
+    />
+  );
 });
+
+TextInput.propTypes = {
+  type: PropTypes.oneOf(['text', 'email', 'password']),
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'error']),
+  autoComplete: PropTypes.string,
+  required: PropTypes.bool,
+  handleChange: PropTypes.func,
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  isFocused: PropTypes.bool,
+};
+
+export default TextInput;
