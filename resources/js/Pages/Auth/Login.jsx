@@ -4,6 +4,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
+import Button from '@/Components/DangerButton';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
@@ -89,10 +90,15 @@ export default function Login({ status, canResetPassword }) {
                             Forgot your password?
                         </Link>
                     )}
+                    <Button type="button" variant="white-outline">
+                        <span className="text-base text-white">
+                            Create New Account
+                        </span>
+                    </Button>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
+                    {/* <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
-                    </PrimaryButton>
+                    </PrimaryButton> */}
                 </div>
             </form>
         </GuestLayout>
