@@ -7,7 +7,7 @@ use Inertia\Inertia;
 
 
 // route login
-Route::redirect('/', '/prototype/login');
+Route::redirect('/', '/login');
 
 // route prototype
 Route::prefix('prototype')->name('prototype.')->group(function () {
