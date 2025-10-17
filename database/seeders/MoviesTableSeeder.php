@@ -18,8 +18,8 @@ class MoviesTableSeeder extends Seeder
                 'name' => 'Avengers: Endgame',
                 'slug' => 'avengers-endgame',
                 'category' => 'Action',
-                'video_url' => 'https://www.youtube.com/watch?v=TcMBFSGVi1c',
-                'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNl5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg',
+                'video_url' => 'https://www.youtube.com/embed/TcMBFSGVi1c',
+                'thumbnail' => '/assets/images/featured-1.png',
                 'rating' => 4.5,
                 'is_featured' => true
             ],
@@ -27,8 +27,8 @@ class MoviesTableSeeder extends Seeder
                 'name' => 'Avengers: Infinity War',
                 'slug' => 'avengers-infinity-war',
                 'category' => 'Action',
-                'video_url' => 'https://www.youtube.com/watch?v=6ZfuNTqbHE8',
-                'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BMjM0NTgyNjAxMV5BMl5BanBnXkFtZTgwNzU1NzU2NTM@._V1_.jpg',
+                'video_url' => 'https://www.youtube.com/embed/6ZfuNTqbHE8',
+                'thumbnail' => '/assets/images/featured-2.png',
                 'rating' => 4.5,
                 'is_featured' => false
             ],
@@ -36,8 +36,8 @@ class MoviesTableSeeder extends Seeder
                 'name' => 'Avengers: Age of Ultron',
                 'slug' => 'avengers-age-of-ultron',
                 'category' => 'Action',
-                'video_url' => 'https://www.youtube.com/watch?v=tmeOjFno6Do',
-                'thumbnail' => 'https://m.media-amazon.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTgwMjQ4OTM4NjE@._V1_.jpg',
+                'video_url' => 'https://www.youtube.com/embed/tmeOjFno6Do',
+                'thumbnail' => '/assets/images/featured-3.png',
                 'rating' => 4.5,
                 'is_featured' => false
             ]

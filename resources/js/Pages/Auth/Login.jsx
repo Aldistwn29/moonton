@@ -14,12 +14,6 @@ export default function Login({ status, canResetPassword }) {
         remember: false,
     });
 
-    // useEffect(() => {
-    //     return() => {
-    //         reset('password');
-    //     }
-    // })
-
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.value);
     }
