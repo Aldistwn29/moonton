@@ -12,7 +12,7 @@ class DashboarController extends Controller
     public function index()
     {
         $feacturedMovies = Movies::where('is_featured', '1')->get();
-        $movies = Movies::all();
+        $movie = Movies::all();
 
         // return [
         //     'feactured' => $feactured,
@@ -21,7 +21,7 @@ class DashboarController extends Controller
 
         return Inertia::render('User/Dashboard/index', [
             'feacturedMovies' => $feacturedMovies,
-            'movies' => $movies
+            'movies' => $movie
         ]);
     }
 }
