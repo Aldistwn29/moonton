@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionsPlansController;
 use App\Http\Controllers\User\DashboarController;
 use App\Http\Controllers\User\MovieController;
+use App\Http\Controllers\User\SubscriptionPlansController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,9 +17,11 @@ Route::redirect('/', '/login');
 Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
     // dashboard utama
     Route::get('/', [DashboarController::class, 'index'])->name('index');
-
     // movie routes
     Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+    // subscription plans routes
+    Route::get('subscription-plans', [SubscriptionPlansController::class, 'index'])->name('subscriptionPlans.index');
+    Route::post('subscription-plan/{subscriptionPlan}/user-subscription', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscriptionPlan.index');
 });
 
 // Prototype Routes

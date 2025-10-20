@@ -1,6 +1,7 @@
 import { Link } from "@inertiajs/react";
+import SubscriptionDetails from '@/Layouts/Authenticated/subscriptionDetails';
 
-export default function Sidebar() {
+export default function Sidebar({ auth }) {
     return (
         <>
             <aside className="fixed z-50 w-[300px] h-full">
@@ -12,7 +13,7 @@ export default function Sidebar() {
                         {/* <!-- Menu --> */}
                         <div>
                             <div className="mb-4 text-sm text-gray-1">Menu</div>
-                            <Link href={route('prototype.dashboard')} className="side-link active">
+                            <Link href={route('user.dashboard.index')} className="side-link active">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g id="Iconly/Bulk/Home">
@@ -54,7 +55,7 @@ export default function Sidebar() {
                         {/* <!-- Others --> */}
                         <div>
                             <div className="mb-4 text-gray-1 side-link">Others</div>
-                            <Link href={route('prototype.subscription')} className="side-link">
+                            <Link href={route('user.dashboard.subscriptionPlans.index')} className="side-link">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fillRule="evenodd" clipRule="evenodd"
@@ -89,22 +90,14 @@ export default function Sidebar() {
                             </a>
                         </div>
                         {/* <!-- ./Others --> */}
-
-                        {/* <!-- Subscription details --> */}
-                        <div className="mt-auto pr-[30px]">
-                            <div className="p-5 bg-white rounded-[25px] outline outline-1 outline-[#f1f1f1]">
-                                <div className="mb-8 text-lg font-semibold text-black">
-                                    Basic
-                                </div>
-                                <div className="mb-2 text-sm text-black">
-                                    5 of 30 hari
-                                </div>
-                                <div className="rounded-full w-full h-[6px] bg-[#f1f1f1]">
-                                    <div className="w-2/12 h-full rounded-full bg-alerange"></div>
-                                </div>
-                            </div>
-                        </div>
-                        {/* <!-- ./Subscription details --> */}
+                        {auth.activePlan && (
+                            <SubscriptionDetails 
+                            name={auth.activePlan.name}
+                            isPremium={auth.activePlan.isPremium}
+                            remainingActiveDays={auth.activePlan.remainingActiveDays}
+                            activeDays={auth.activePlan.activeDays}
+                            />
+                        )}
                     </div>
                 </div>
             </aside>

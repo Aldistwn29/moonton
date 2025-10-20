@@ -11,4 +11,10 @@ class SubscriptionPlans extends Model
     use HasFactory, SoftDeletes;
     protected $fillable = ['name', 'price', 'active_periode_in_months', 'featured'];
     
+
+    // relasi ke tabel user subscription
+    public function user_subscriptions()
+    {
+        return $this->hasOne(UserSubscriptions::class);
+    }
 }
