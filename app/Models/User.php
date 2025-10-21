@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -45,5 +47,22 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // relasi ke model user subscription
+    public function LastUserSubscription()
+    {
+        return $this->hasOne(UserSubscriptions::class)->where('status_payment', 'paid')->latest();
+    }
+
+    // accessor untuk mengecek apakah user aktif
+    public function getIsActiveAttribute()
+    {
+        if (!$this->LastUserSubscription) {
+            return false;
+        }
+        $dateNow = Carbon::now();
+        $dataExpired = Carbon::create($this->LastUserSubscription->expired_date);
+        return $dateNow->lessThanOrEqualTo($dataExpired);
     }
 }

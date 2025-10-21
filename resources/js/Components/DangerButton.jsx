@@ -5,6 +5,7 @@ export default function DangerButton({
     className = '',
     variant = "primary",
     processing,
+    disabled,
     children,
     ...props
 }) {

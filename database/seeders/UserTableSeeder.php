@@ -20,5 +20,13 @@ class UserTableSeeder extends Seeder
         ]);
         // mengassign role admin
         $admin->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'user montoon',
+            'email'=> 'user@gmail.com',
+            'password' => bcrypt('password'),
+        ]);
+        // mengassign role user
+        $user->assignRole('user');
     }
 }
