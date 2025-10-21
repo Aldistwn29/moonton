@@ -1,6 +1,7 @@
+import { Link } from "@inertiajs/react";
 import { useState, useRef } from "react";
 
-export default function Topbar() {
+export default function Topbar({name}) {
     const [dropDownOpen, setDropDown] = useState(true);
     const dropDownTarget = useRef();
 
@@ -21,7 +22,7 @@ export default function Topbar() {
                     className="top-search" 
                     placeholder="Search movie, cast, genre"/>
                 <div className="flex items-center gap-4">
-                    <span className="text-sm font-medium text-black">Welcome, Granola Sky</span>
+                    <span className="text-sm font-medium text-black">Welcome, {name}</span>
                     <div className="relative flex flex-col gap-2 collapsible-dropdown">
                         <a href="#!"
                             className="outline outline-2 outline-gray-2 p-[5px] rounded-full w-[60px] dropdown-button"
@@ -34,9 +35,9 @@ export default function Topbar() {
                         </a>
                         <div className="bg-white rounded-2xl text-black font-medium flex flex-col gap-1 absolute z-[999] right-0 top-[80px] min-w-[180px] hidden overflow-hidden"
                             ref={dropDownTarget}>
-                            <a href="#!" className="p-4 transition-all hover:bg-sky-100">Dashboard</a>
-                            <a href="#!" className="p-4 transition-all hover:bg-sky-100">Settings</a>
-                            <a href="sign_in.html" className="p-4 transition-all hover:bg-sky-100">Sign Out</a>
+                            <Link href="#!" className="p-4 transition-all hover:bg-sky-100">Dashboard</Link>
+                            <Link href="#!" className="p-4 transition-all hover:bg-sky-100">Settings</Link>
+                            <Link href={route('logout')} method="post" className="p-4 transition-all hover:bg-sky-100">Sign Out</Link>
                         </div>
                     </div>
                 </div>

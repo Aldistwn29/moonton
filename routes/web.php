@@ -1,41 +1,59 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriptionsPlansController;
+use App\Http\Controllers\User\DashboarController;
+use App\Http\Controllers\User\MovieController;
+use App\Http\Controllers\User\SubscriptionPlansController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 
-// route login
-Route::redirect('/', '/prototype/login');
+// Redirect root to login page
+Route::redirect('/', '/login');
 
-// route prototype
-Route::prefix('prototype')->name('prototype.')->group(function () {
-    Route::get('/login', function() {
-        return inertia::render('prototype/login');
-    })->name('login');
-
-    Route::get('/register', function() {
-        return inertia::render('prototype/register');
-    })->name('register');
-
-    Route::get('/dashboard', function() {
-        return inertia::render('prototype/dashboard');
-    })->name('dashboard');
-
-    Route::get('/subscription', function() {
-        return inertia::render('prototype/subscription');
-    })->name('subscription');
-
-    Route::get('/movie/{slug}', function() {
-        return inertia::render('prototype/movie/show');
-    })->name('movie.show');
-    
+// User Routes
+Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashboard.')->group(function () {
+    // dashboard utama
+    Route::get('/', [DashboarController::class, 'index'])->name('index');
+    // movie routes
+    Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show')->middleware('checkUserSubscription:true');
+    // subscription plans routes
+    Route::get('subscription-plans', [SubscriptionPlansController::class, 'index'])->name('subscriptionPlans.index')->middleware('checkUserSubscription:false');
+    Route::post('subscription-plan/{subscriptionPlan}/user-subscription', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscriptionPlan.index')->middleware('checkUserSubscription:false');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Prototype Routes
+Route::prefix('prototype')->name('prototype.')->group(function () {
+    // Guest Routes
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', function() {
+            return Inertia::render('prototype/login');
+        })->name('login');
+
+        Route::get('/register', function() {
+            return Inertia::render('prototype/register');
+        })->name('register');
+    });
+
+    // Feature Routes
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', function() {
+            return Inertia::render('prototype/dashboard');
+        })->name('dashboard');
+
+        Route::get('/subscription', function() {
+            return Inertia::render('prototype/dubscription');
+        })->name('subscription');
+
+        Route::get('/movie/{slug}', function() {
+            return Inertia::render('prototype/movie/show');
+        })->name('movie.show');
+    });
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
