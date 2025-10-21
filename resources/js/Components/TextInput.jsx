@@ -39,7 +39,7 @@ const TextInput = forwardRef(function TextInput(
       required={required}
       onChange={handleChange || onChange}
       placeholder={placeholder}
-      className={`rounded-2xl bg-form-bg py-[13px] px-7 w-full input-${variant} ${className}`}
+      className={`rounded-2xl bg-white text-black py-[13px] px-7 w-full input-${variant} ${className}`}
     />
   );
 });

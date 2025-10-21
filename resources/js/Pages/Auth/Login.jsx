@@ -76,7 +76,7 @@ export default function Login({ status, canResetPassword }) {
                         <div>
                             {canResetPassword && (
                                 <Link href={route('password.request')}
-                                    className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                    className="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                     <Button type="submit" processing={processing} variant="white-outline">
                                         <span className="text-base text-white">
                                             Forget Your Password
