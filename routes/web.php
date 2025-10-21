@@ -18,10 +18,10 @@ Route::middleware(['auth', 'role:user'])->prefix('dashboard')->name('user.dashbo
     // dashboard utama
     Route::get('/', [DashboarController::class, 'index'])->name('index');
     // movie routes
-    Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+    Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show')->middleware('checkUserSubscription:true');
     // subscription plans routes
-    Route::get('subscription-plans', [SubscriptionPlansController::class, 'index'])->name('subscriptionPlans.index');
-    Route::post('subscription-plan/{subscriptionPlan}/user-subscription', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscriptionPlan.index');
+    Route::get('subscription-plans', [SubscriptionPlansController::class, 'index'])->name('subscriptionPlans.index')->middleware('checkUserSubscription:false');
+    Route::post('subscription-plan/{subscriptionPlan}/user-subscription', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscriptionPlan.index')->middleware('checkUserSubscription:false');
 });
 
 // Prototype Routes
