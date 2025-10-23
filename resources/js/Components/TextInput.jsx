@@ -32,6 +32,7 @@ const TextInput = forwardRef(function TextInput(
       {...props}
       ref={ref || inputRef}
       type={type}
+      {...(type !== "file" && {value})}
       name={name}
       value={value}
       defaultValue={defaultValue}
@@ -45,12 +46,12 @@ const TextInput = forwardRef(function TextInput(
 });
 
 TextInput.propTypes = {
-  type: PropTypes.oneOf(['text', 'email', 'password']),
+  type: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'error']),
+  variant: PropTypes.oneOf(['primary', 'primary-outline', 'error']),
   autoComplete: PropTypes.string,
   required: PropTypes.bool,
   handleChange: PropTypes.func,

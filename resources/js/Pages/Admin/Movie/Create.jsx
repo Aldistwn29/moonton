@@ -17,15 +17,18 @@ export default function Create({ auth }) {
     });
 
     const onHandleChange = (event) => {
-        setData(
-            event.target.name,
-            event.target.type === "file" ? event.target.file[0] : event.target.value
-        );
+        const {name, type, value, files } = event.target;
+        if (type === "file") {
+            console.log("File yang terkirim:", files[0]);
+        }
+        setData(name, type === 'file' ? files[0] : value);
     }
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('admin.dashboard.movie.store'));
+        post(route('admin.dashboard.movie.store'),{
+            forceFormData: true,
+        });
     }
 
     return (
@@ -42,7 +45,7 @@ export default function Create({ auth }) {
                             type="text"
                             name="name"
                             variant="primary-outline"
-                            onchange={onHandleChange}
+                            onChange={onHandleChange}
                             placeholder="Enter your name movie"
                         />
                         <InputError message={errors.name} className="mt-4" />
@@ -78,7 +81,6 @@ export default function Create({ auth }) {
                         <TextInput
                             type="file"
                             name="thumbnail"
-                            value={data.thumbnail}
                             variant="primary-outline"
                             isFocused={true}
                             onChange={onHandleChange}
