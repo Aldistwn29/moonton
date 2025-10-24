@@ -33,6 +33,7 @@ Route::prefix('user')->name('user.dashboard.')->group(function() {
 // Admin Route
 Route::prefix('admin')->name('admin.dashboard.')->group(function() {
     Route::middleware(['auth', 'role:admin'])->group(function () {
+        Route::put('movie/{movie}/restore', [AdminMovieController::class, 'restore'])->name('movie.restore');
         Route::resource('movie', AdminMovieController::class);
     });
 });
