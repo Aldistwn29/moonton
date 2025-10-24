@@ -7,13 +7,14 @@ export default function DangerButton({
     processing,
     disabled,
     children,
+    fullwidth = true,
     ...props
 }) {
     return (
         <button
             {...props}
             className={
-                `rounded-2xl py-[13px] text-center w-full ${processing &&  "opacity-30"} btn-${variant} ${className}`
+                `rounded-2xl py-[13px] text-center ${fullwidth ? 'w-full' : ''} ${processing &&  "opacity-30"} btn-${variant} ${className}`
             }
             disabled={processing}
         >
@@ -26,5 +27,6 @@ export default function DangerButton({
     className: propTypes.string,
     variant: propTypes.oneOf(['primary', 'secondary', 'danger', 'light-outline', 'white-outline']),
     processing: propTypes.bool,
+    fullwidth: propTypes.bool,
     children: propTypes.node
     };

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class UserTableSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // buat admin
         $admin =User::create([
             'name' => 'admin montoon',
             'email' => 'adminMonton@gmail.com',
@@ -21,6 +23,7 @@ class UserTableSeeder extends Seeder
         // mengassign role admin
         $admin->assignRole('admin');
 
+        // buat user
         $user = User::create([
             'name' => 'user montoon',
             'email'=> 'user@gmail.com',
