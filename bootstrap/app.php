@@ -15,6 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
+
+        // CSRF Exception untuk callback dari Midtrans
+        $middleware->validateCsrfTokens(except: [
+            'midtrans/notification',
+        ]);
+
         // role permission spatie
         $middleware->alias([
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
@@ -26,3 +32,4 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+

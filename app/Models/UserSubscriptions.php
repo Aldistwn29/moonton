@@ -17,10 +17,4 @@ class UserSubscriptions extends Model
     {
         return $this->belongsTo(SubscriptionPlans::class, 'subscription_plan_id');
     }
-
-    // // relasi ke table user
-    // public function users()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id');
-    // }
 }
