@@ -13,6 +13,8 @@ use Inertia\Inertia;
 
 // Redirect root to login page
 Route::redirect('/', '/login');
+// notification midtrans
+Route::post('midtrans/notification', [SubscriptionPlansController::class, 'midtransCallback']);
 
 
 
@@ -25,8 +27,7 @@ Route::prefix('user')->name('user.dashboard.')->group(function() {
     Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show')->middleware('checkUserSubscription:true');
     // subscription plans routes
     Route::get('subscription-plans', [SubscriptionPlansController::class, 'index'])->name('subscriptionPlans.index')->middleware('checkUserSubscription:false');
-    Route::post('subscription-plan/{subscriptionPlan}/user-subscription', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscriptionPlan.index')->middleware('checkUserSubscription:false');
-
+    Route::post('subscription-plan/{subscriptionPlan}/subscribe', [SubscriptionPlansController::class, 'userSubscribe'])->name('subscription.subscribe')->middleware('checkUserSubscription:false');
     });
 });
 
