@@ -1,8 +1,8 @@
 import Authenticated from "@/Layouts/Authenticated/Index"
 import FeaturedMovie from "@/Components/FeaturedMovie";
 import MovieCard from "@/Components/MovieCard";
-import Flickity from "react-flickity-component";
 import { Head } from "@inertiajs/react";
+import Flickity from "flickity";
 
 export default function Dashboard({auth, feacturedMovies, movies}) {
     const ficityOptions = {
